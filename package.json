@@ -1,0 +1,42 @@
+{
+  "name": "BlockbusterIssueTracking",
+  "description": "An issue tracking software/web application for movie streaming service Blockbuster",
+  "version": "1.0.0",
+  "license": "",
+  "author": "Tobias Rognstad, Martin Sørbø, Felix Skarlund, Ingvild Risberg",
+  "contributors": [
+    "Tobias Walmann Rognstad <tobiaswrognstad@gmail.com>",
+    "Martin Gilje Sørbø <martingsorbo@gmail.com>",
+    "Felix Viksjø Skarlund <felixskarlund@gmail.com>",
+    "Ingvild Stenersen Risberg <ingvildrisberg@yahoo.no>"
+  ],
+  "dependencies": {
+    "bignumber.js": "4.1.0",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "mysql": "^2.15.0",
+    "readable-stream": "2.3.5",
+    "safe-buffer": "5.1.1",
+    "sqlstring": "2.3.1"
+  },
+  "devDependencies": {
+    "after": "0.8.2",
+    "eslint": "4.18.2",
+    "nyc": "10.3.2",
+    "seedrandom": "2.4.3",
+    "timezone-mock": "0.0.7",
+    "urun": "0.0.8",
+    "utest": "0.0.8"
+  },
+  "files": [],
+  "engines": {
+    "node": ">= 0.6"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "test": "node test/run.js",
+    "test-ci": "nyc --reporter=text npm test",
+    "test-cov": "nyc --reporter=html --reporter=text npm test",
+    "version": "node tool/version-changes.js && git add Changes.md"
+  }
+}
