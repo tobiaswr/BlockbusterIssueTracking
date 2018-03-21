@@ -1,5 +1,4 @@
 $(document).ready(() => {
-
     function drag(ev) {
         ev.dataTransfer.setData("text", ev.target.id);
     }
@@ -7,6 +6,9 @@ $(document).ready(() => {
     const $needsResumeList = $("#needsResumeList");
     const $needsTransList = $("#needsTransList");
     const $readyList = $("#readyList");
+    const $addMovieModal = $("#addMovie-modal");
+
+    $addMovieModal.toggle();
 
     $needsTransList.empty();
     $needsResumeList.empty();
@@ -27,7 +29,7 @@ $(document).ready(() => {
                         <div class="remove-movie-vertical"></div>
                         <div class="remove-movie-horizontal"></div>
                     </a>
-                </div>`
+                </div>`;
             }
             else if (!movie.needsResume && movie.needsTrans) {
                 movieHtml = `
@@ -39,7 +41,7 @@ $(document).ready(() => {
                 <a href="#" class="movie-options-box w-inline-block moveToReady" data-movie-id="${movie.id}" id ="moveToReady">
                     <div class="movie-options-arrow"></div>
                 </a>
-            </div>`
+            </div>`;
             }
             else {
                 movieHtml = `
@@ -51,7 +53,7 @@ $(document).ready(() => {
                 <a class="movie-options-box w-inline-block moveToTrans" data-movie-id="${movie.id}" id="moveToTrans">
                     <div class="movie-options-arrow"></div>
                 </a>
-            </div>`
+            </div>`;
             }
 
             if (movie.needsResume) {
@@ -86,6 +88,25 @@ $(document).ready(() => {
 
     });
 
+
+
+//----- OPEN
+            $('.addMovie').on('click', function(e)  {
+                var targeted_popup_class = jQuery(this).attr('data-popup-open');
+                $("#movieTitle-2").value = "";
+                $("#img-2").value="";
+                $("#needsResume").prop("checked", false);
+                $('[data-popup="' + targeted_popup_class + '"]').fadeIn(350);
+                $("#modalWrapper").addClass("modal-wrapper-show");
+                e.preventDefault();
+            });
+//----- CLOSE
+            $('[data-popup-close]').on('click', function(e)  {
+                var targeted_popup_class = jQuery(this).attr('data-popup-close');
+                $('[data-popup="' + targeted_popup_class + '"]').fadeOut(350);
+                $("#modalWrapper").removeClass("modal-wrapper-show");
+                e.preventDefault();
+            });
 
 
 });

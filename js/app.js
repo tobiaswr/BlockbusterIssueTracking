@@ -106,6 +106,32 @@ app.post('/transDone/:id', function(req, res) {
     connection.end();
 });
 
+//Add new movie
+app.post('/addMovie', function(req, res) {
+    // Connect to MySQL database.
+    var connection = getMySQLConnection();
+    connection.connect();
+
+    // Do the query to get data.
+    connection.query(`INSERT INTO movie (?, ?, ?, 1, ?)`, (err, rows) => {
+
+        if (err) {
+            res.status(500).json({"status_code": 500,"status_message": "internal server error"});
+        } else {
+            // Check if the result is found or not
+            if(rows.length !== 0) {
+                res.send("Updated.");
+            } else {
+                // render not found page
+                res.status(404).json({"status_code":404, "status_message": "Not found"});
+            }
+        }
+    });
+
+    // Close MySQL connection
+    connection.end();
+});
+
 app.listen(3000, function () {
    console.log('Listening on port 3000');
 });

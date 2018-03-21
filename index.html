@@ -33,6 +33,74 @@
   <link href="https://daks2k3a4ib2z.cloudfront.net/img/webclip.png" rel="apple-touch-icon">
 </head>
 <body>
+
+<div class="modal-wrapper" data-popup="popup-1" id="modalWrapper">
+  <div class="modal">
+    <div class="movie-options-box close-modal-button closeModal" data-popup-close="popup-1">
+      <div class="remove-movie-vertical"></div>
+      <div class="remove-movie-horizontal"></div>
+    </div>
+    <div class="w-form form">
+      <div id="wf-form-Add-Movie-Form" name="wf-form-Add-Movie-Form" data-name="Add Movie Form" class="form-2">
+        <h1 class="heading">Add movie</h1>
+        <div class="divider"></div>
+        <input type="text" class="input w-input" maxlength="256" autofocus="true" name="movieTitle" data-name="movieTitle" placeholder="Movie title" id="movieTitle-2" required="">
+        <select id="releaseYear" name="releaseYear" data-name="releaseYear" required="" class="input selectfield w-select">
+          <option value="">Release year...</option>
+          <option value="1980">1980</option>
+          <option value="1981">1981</option>
+          <option value="1982">1982</option>
+          <option value="1983">1983</option>
+          <option value="1984">1984</option>
+          <option value="1985">1985</option>
+          <option value="1986">1986</option>
+          <option value="1987">1987</option>
+          <option value="1988">1988</option>
+          <option value="1989">1989</option>
+          <option value="1990">1990</option>
+          <option value="1991">1991</option>
+          <option value="1992">1992</option>
+          <option value="1993">1993</option>
+          <option value="1994">1994</option>
+          <option value="1995">1995</option>
+          <option value="1996">1996</option>
+          <option value="1997">1997</option>
+          <option value="1998">1998</option>
+          <option value="1999">1999</option>
+          <option value="2000">2000</option>
+          <option value="2001">2001</option>
+          <option value="2002">2002</option>
+          <option value="2003">2003</option>
+          <option value="2004">2004</option>
+          <option value="2005">2005</option>
+          <option value="2006">2006</option>
+          <option value="2007">2007</option>
+          <option value="2008">2008</option>
+          <option value="2009">2009</option>
+          <option value="2010">2010</option>
+          <option value="2011">2011</option>
+          <option value="2012">2012</option>
+          <option value="2013">2013</option>
+          <option value="2014">2014</option>
+          <option value="2015">2015</option>
+          <option value="2016">2016</option>
+          <option value="2017">2017</option>
+          <option value="2018">2018</option>
+        </select>
+        <input type="text" class="input w-input" maxlength="256" name="img" data-name="img" placeholder="IMDB Image URL" id="img-2" required="">
+        <div class="checkbox-field w-checkbox">
+          <input type="checkbox" id="needsResume" name="needsResume" data-name="needsResume" class="w-checkbox-input"><label for="needsResume" class="w-form-label">Has original resumé</label></div><input type="submit" value="Add Movie" data-wait="Please wait..." class="button w-button" id="submitMovieBtn"></div>
+      <div class="success-message w-form-done">
+        <div>Movie have been added to database.</div>
+      </div>
+      <div class="error-message w-form-fail">
+        <div>Oops! Something went wrong. Try again.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="mainBody">
   <div class="header">
     <div class="logo"><img src="images/bblogo.png" srcset="images/bblogo-p-500.png 500w, images/bblogo.png 695w" sizes="100vw" class="logo-img"></div>
     <div class="country"><a href="index.html" class="country-flag w-inline-block"><img src="images/if_Denmark_298530.png"></a><a href="/blockbuster-issue-tracking-fi" class="country-flag w-inline-block"><img src="images/if_Finland_298427.png"></a><a href="/blockbuster-issue-tracking-no" class="country-flag w-inline-block"><img src="images/if_Norway_298446.png"></a><a href="/blockbuster-issue-tracking-se" class="country-flag w-inline-block"><img src="images/if_Sweden_298496.png"></a></div>
@@ -46,7 +114,7 @@
       <div class="divider"></div>
       <div class="issue-list-container">
         <div class="task-block add-movie-block">
-          <div class="add-movie-button">
+          <div class="add-movie-button addMovie" data-popup-open="popup-1">
             <div class="add-movie-vertical"></div>
             <div class="add-movie-horizontal"></div>
           </div>
@@ -94,9 +162,9 @@
     <div class="issue-list-box">
       <h1 class="heading">Needs translation</h1>
       <div class="divider"></div>
-      <div class="issue-list-container" >
+      <div class="issue-list-container">
         <div class="task-block add-movie-block">
-          <div class="add-movie-button">
+          <div class="add-movie-button addMovie" data-popup-open="popup-1">
             <div class="add-movie-vertical"></div>
             <div class="add-movie-horizontal"></div>
           </div>
@@ -164,6 +232,9 @@
   <div class="footer">
     <div class="footer-text">© 2018 Blockbuster</div>
   </div>
+
+
+</div>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript" intergrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="js/webflow.js" type="text/javascript"></script>
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
@@ -176,6 +247,5 @@
   <script src="lib/js/jquery-3.2.1.js"></script>
   <script src="lib/js/bootstrap.js"></script>
   <script src="js/script.js"></script>
-  <script src="js/SDK.js"></script>
 </body>
 </html>
