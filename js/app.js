@@ -2,10 +2,13 @@ var express = require('express');
 var mysql = require('mysql');
 var cors = require('cors');
 
-
 const app = express();
 app.use(cors());
 app.options('*', cors());
+
+var bodyParser = require('body-parser');
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //Create connection to MySQL Database Server
 function getMySQLConnection() {
@@ -87,7 +90,7 @@ app.post('/transDone/:id', function(req, res) {
     connection.connect();
 
     // Do the query to get data.
-    connection.query(`UPDATE movies SET needsTrans = 0 WHERE id =  + ${req.params.id}`, (err, rows) => {
+    connection.query(`UPDATE movies SET needsTrans = 0 WHERE id = + ${req.params.id}`, (err, rows) => {
 
         if (err) {
             res.status(500).json({"status_code": 500,"status_message": "internal server error"});
@@ -111,16 +114,17 @@ app.post('/addMovie', function(req, res) {
     // Connect to MySQL database.
     var connection = getMySQLConnection();
     connection.connect();
-
     // Do the query to get data.
-    connection.query(`INSERT INTO movie (?, ?, ?, 1, ?)`, (err, rows) => {
+    let requestDone = req.body;
+    var params = [requestDone.title, requestDone.releaseYear, requestDone.needsResume, requestDone.img];
+    connection.query(`INSERT INTO movies (title, releaseYear, needsResume, needsTrans, img) VALUES (?, ?, ?, 1, ?)`, params, (err, rows) => {
 
         if (err) {
             res.status(500).json({"status_code": 500,"status_message": "internal server error"});
         } else {
             // Check if the result is found or not
-            if(rows.length !== 0) {
-                res.send("Updated.");
+            if(rows.length !== 1) {
+                res.send("Movie added.");
             } else {
                 // render not found page
                 res.status(404).json({"status_code":404, "status_message": "Not found"});
