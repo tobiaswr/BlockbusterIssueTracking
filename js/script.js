@@ -97,6 +97,14 @@ $(document).ready(() => {
 
     });
 
+    var year = new Date().getFullYear();
+    for (var i = year; i > year-60; i--){
+        $('#releaseYear')
+            .append($("<option></option>")
+                .attr("value",i)
+                .text(i));
+    }
+
 
 
 //----- OPEN
