@@ -377,6 +377,10 @@ h1 {
   max-height: 57vh;
 }
 
+.issue-list-container::-webkit-scrollbar {
+  display: none;
+}
+
 .remove-movie-vertical {
   position: absolute;
   left: 13.5px;

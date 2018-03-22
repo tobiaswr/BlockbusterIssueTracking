@@ -25,7 +25,7 @@ $(document).ready(() => {
                         <div class="thumb"><img src= ${movie.img} width="337" sizes="50px" class="thumb-img"></div>
                         <div class="movie-title">${movie.title} (${movie.releaseYear})</div>
                     </div>
-                    <a href="#" class="movie-options-box w-inline-block finishedPosting" data-movie-id="${movie.id}" id="finishedPosting">
+                    <a href="#" class="movie-options-box w-inline-block finishedPosting" data-movie-id="${movie.id}">
                         <div class="remove-movie-vertical"></div>
                         <div class="remove-movie-horizontal"></div>
                     </a>
@@ -80,6 +80,15 @@ $(document).ready(() => {
         $(".moveToReady").click(function () {
             const idMovie = $(this).data("movie-id");
             $.post("http://localhost:3000/transDone/"+idMovie, function(result){
+                alert(result);
+                window.location.reload();
+            });
+
+        });
+
+        $(".finishedPosting").click(function () {
+            const idMovie = $(this).data("movie-id");
+            $.post("http://localhost:3000/deleteMovie/"+idMovie, function(result){
                 alert(result);
                 window.location.reload();
             });
