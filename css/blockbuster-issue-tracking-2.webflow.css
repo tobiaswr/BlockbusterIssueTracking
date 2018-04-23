@@ -142,6 +142,16 @@ h1 {
   background-color: #fff;
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, .3);
 }
+.login {
+  display: block;
+  width: 30%;
+  max-height: 75vh;
+  margin: 17.5vh auto;
+  padding: 25px;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, .3);
+}
 
 .heading {
   margin-top: 0px;

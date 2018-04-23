@@ -162,6 +162,43 @@ app.post('/deleteMovie/:id', function(req, res) {
     connection.end();
 });
 
+//Get all users
+app.get('/login', function(req, res) {
+    var usersList = [];
+
+    // Connect to MySQL database.
+    var connection = getMySQLConnection();
+    connection.connect();
+
+    // Do the query to get data.
+    connection.query('SELECT * FROM users', (err, rows) => {
+        if (err) {
+            res.status(500).json({"status_code": 500,"status_message": "internal server error"});
+        } else {
+            // Loop check on each row
+            for (var i = 0; i < rows.length; i++) {
+
+                // Create an object to save current row's data
+                var user = {
+                    id: rows[i].id,
+                    username: rows[i].username,
+                    password: rows[i].password,
+                    stilling: rows[i].stilling,
+                    fornavn: rows[i].fornavn,
+                    etternavn: rows[i].etternavn,
+                    email: rows[i].email
+                }
+                // Add object into array
+                usersList.push(user);
+            }
+            res.send(usersList);
+        }
+    });
+
+    // Close the MySQL connection
+    connection.end();
+});
+
 app.listen(3000, function () {
    console.log('Listening on port 3000');
 });

@@ -137,7 +137,7 @@ $(document).ready(() => {
         $.ajax({
             type: 'POST',
             url: 'http://localhost:3000/addMovie',
-            data: `{"title":"${movietitle}", "releaseYear":${moviereleaseYear},"needsResume":${movieneedsResume},"img":"${movieimg}"}`, // or JSON.stringify ({name: 'jonas'}),
+            data: `{"title":"${movietitle}", "releaseYear":${moviereleaseYear},"needsResume":${movieneedsResume},"img":"${movieimg}"}`, // or JSON.stringify ({name: 'toby'}),
             success: function() {
                 alert("Movie added.");
             },
@@ -146,6 +146,8 @@ $(document).ready(() => {
         });
         window.location.reload();
     });
+
+
 
 
 });
