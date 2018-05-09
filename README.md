@@ -1,5 +1,5 @@
 # Blockbuster Issue Tracking
-A simple issue tracking web app for Blockbuster's marketing team.
+A simple task tracking web app for Blockbuster's marketing team.
 
 ## Team
 * Tobias Walmann Rognstad
