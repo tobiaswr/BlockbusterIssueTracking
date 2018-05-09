@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>app.js</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #999999; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,0); }
+.s1 { color: rgb(0,128,0); font-weight: bold; }
+.s2 { color: rgb(0,0,128); font-weight: bold; }
+.s3 { color: rgb(128,128,128); font-style: italic; }
+.s4 { color: rgb(0,0,255); }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+app.js</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">app.post(</span><span class="s1">'/resumeDone/:id'</span><span class="s0">, </span><span class="s2">function</span><span class="s0">(req, res) { 
+<a name="l61"><span class="ln">61   </span></a>    </span><span class="s3">// Connect to MySQL database.</span><span class="s0"> 
+<a name="l62"><span class="ln">62   </span></a>    </span><span class="s2">var </span><span class="s0">connection = getMySQLConnection(); 
+<a name="l63"><span class="ln">63   </span></a>    connection.connect(); 
+<a name="l64"><span class="ln">64   </span></a> 
+<a name="l65"><span class="ln">65   </span></a>    </span><span class="s3">// Do the query to get data.</span><span class="s0"> 
+<a name="l66"><span class="ln">66   </span></a>    connection.query(</span><span class="s1">`UPDATE movies SET needsResume = 0 WHERE id =  + </span><span class="s0">${req.params.id}</span><span class="s1">`</span><span class="s0">, (err, rows) =&gt; { 
+<a name="l67"><span class="ln">67   </span></a> 
+<a name="l68"><span class="ln">68   </span></a>        </span><span class="s2">if </span><span class="s0">(err) { 
+<a name="l69"><span class="ln">69   </span></a>            res.status(</span><span class="s4">500</span><span class="s0">).json({</span><span class="s1">&quot;status_code&quot;</span><span class="s0">: </span><span class="s4">500</span><span class="s0">,</span><span class="s1">&quot;status_message&quot;</span><span class="s0">: </span><span class="s1">&quot;internal server error&quot;</span><span class="s0">}); 
+<a name="l70"><span class="ln">70   </span></a>        } </span><span class="s2">else </span><span class="s0">{ 
+<a name="l71"><span class="ln">71   </span></a>            </span><span class="s3">// Check if the result is found or not</span><span class="s0"> 
+<a name="l72"><span class="ln">72   </span></a>            </span><span class="s2">if</span><span class="s0">(rows.length !== </span><span class="s4">0</span><span class="s0">) { 
+<a name="l73"><span class="ln">73   </span></a>                res.send(</span><span class="s1">&quot;Updated.&quot;</span><span class="s0">); 
+<a name="l74"><span class="ln">74   </span></a>            } </span><span class="s2">else </span><span class="s0">{ 
+<a name="l75"><span class="ln">75   </span></a>                </span><span class="s3">// render not found page</span><span class="s0"> 
+<a name="l76"><span class="ln">76   </span></a>                res.status(</span><span class="s4">404</span><span class="s0">).json({</span><span class="s1">&quot;status_code&quot;</span><span class="s0">:</span><span class="s4">404</span><span class="s0">, </span><span class="s1">&quot;status_message&quot;</span><span class="s0">: </span><span class="s1">&quot;Not found&quot;</span><span class="s0">}); 
+<a name="l77"><span class="ln">77   </span></a>            } 
+<a name="l78"><span class="ln">78   </span></a>        } 
+<a name="l79"><span class="ln">79   </span></a>    }); 
+<a name="l80"><span class="ln">80   </span></a> 
+<a name="l81"><span class="ln">81   </span></a>    </span><span class="s3">// Close MySQL connection</span><span class="s0"> 
+<a name="l82"><span class="ln">82   </span></a>    connection.end(); 
+<a name="l83"><span class="ln">83   </span></a>});</span></pre>
+</body>
+</html>

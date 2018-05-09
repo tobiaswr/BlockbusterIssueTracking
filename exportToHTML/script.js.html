@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>script.js</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #999999; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,0); }
+.s1 { color: rgb(0,128,0); font-weight: bold; }
+.s2 { color: rgb(0,0,128); font-weight: bold; }
+.s3 { color: rgb(0,0,255); }
+.s4 { color: rgb(128,128,128); font-style: italic; }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+script.js</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">$(</span><span class="s1">&quot;.moveToTrans&quot;</span><span class="s0">).click(</span><span class="s2">function </span><span class="s0">() { 
+<a name="l72"><span class="ln">72   </span></a>            </span><span class="s2">const </span><span class="s0">idMovie = $(</span><span class="s2">this</span><span class="s0">).data(</span><span class="s1">&quot;movie-id&quot;</span><span class="s0">); 
+<a name="l73"><span class="ln">73   </span></a>            $.post(</span><span class="s1">&quot;http://localhost:3000/resumeDone/&quot;</span><span class="s0">+idMovie, </span><span class="s2">function</span><span class="s0">(result){ 
+<a name="l74"><span class="ln">74   </span></a>                alert(result); 
+<a name="l75"><span class="ln">75   </span></a>                window.location.reload(); 
+<a name="l76"><span class="ln">76   </span></a>            }); 
+<a name="l77"><span class="ln">77   </span></a>        });</span></pre>
+</body>
+</html>
